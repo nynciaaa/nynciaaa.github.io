@@ -1,0 +1,49 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 100px;
+  padding: 10px;
+}
+/* I want my answers for the review to be boxes stacked in a single column so users can scroll down as they read it */
+
+.grid-box {
+  display: grid;
+  place-items: center;
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid black;
+  background-color: rgba(222, 229, 239, 0.8);
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* I wanted the heading to be top centered */
+h1 {
+  font-size: 30px;
+}
+
+body {
+  background-image: url(background\ 1.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* I want the background to fit the theme of Rich Brown's website. 
+Due to not having enough technical skills and knowledge to code my desired background, I used Canvas to design the background and imported it to VSC */
