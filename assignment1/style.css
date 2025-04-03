@@ -1,10 +1,83 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 100px;
+/*body {
+  background-image: url(background\ 1.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+/* Background1 is a free image i found on google and it did not blend in with the aesthetics that well, as it did not look good */
+
+/*body {
+  background-image: url(background\ 2.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+/* Tried making my own background on Canvas but i did not know the standard size for UI/UX backgrounds, thus the image came out blurry and very closed-up when I imported it, only showing a certain area of it */
+
+body {
+  background-image: url(background\ 4.jpg);
+  /* I found this image on a free images site and i thought it fit well with my chosen beach aesthetic than putting a plain solid colour */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/*I was going for a beach themed aesthetic for my reviewing Rich Brown site because my favourite colour is blue and I sometime associate it with the beach */
+
+body {
+  border: 50px solid rgb(97, 105, 120);
+  margin: 0;
   padding: 10px;
 }
-/* I want my answers for the review to be boxes stacked in a single column so users can scroll down as they read it */
+/* I added some personal touches of a border to enhance the visuals of the site */
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+/*I want users to know what the site is for */
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  gap: 25px;
+}
+/* I decided to incorporate grid containers because it makes my answers and questions stand out, not blending in with the background */
+
+.grid-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  width: 100%;
+  max-width: 800px;
+  background-color: rgba(43, 54, 68, 0.9);
+  border: 2px solid rgb(255, 255, 255);
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+  font-size: 20px;
+  font-family: "Gruppo", sans-serif;
+}
+
+/*.grid-container {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 20px; /
+  padding: 10px;  
+
 
 .grid-box {
   display: grid;
@@ -14,36 +87,59 @@
   padding: 20px;
   border: 2px solid black;
   background-color: rgba(222, 229, 239, 0.8);
-  font-weight: bold;
-}
+  font-weight: bold; 
+} */
+/*I removed it because i found it too bulky and not pleasant to read. The excess space was filling the page too much and i wanted it to be wrapped around the text. */
 
-h1 {
+h3 {
+  background-color: rgb(241, 220, 196);
+  /*I choose this colour because it reminds me of the sand */
+  color: rgb(0, 0, 0);
+  padding: 15px;
+  border-radius: 5px;
   text-align: center;
-  font-size: 40px;
-  font-weight: bold;
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid rgb(255, 255, 255);
+  margin-top: 5px;
+  font-family: "Sen", sans-serif;
 }
 
-a {
-  text-decoration: none;
+li {
+  background-color: rgb(241, 220, 196);
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  border: 2px solid rgb(255, 255, 255);
+  margin-top: 5px;
+  font-family: "Sen", sans-serif;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 40px;
+  font-family: "Sen", sans-serif;
+}
+
+.image-container {
   text-align: center;
-  margin-top: 10px;
+  margin: 20px 0;
+}
+/* coding for the image on index.html */
+
+.meow {
+  /*I named it "meow" because i didn't know what else to name it */
+  max-width: 100px;
+  height: auto;
 }
 
-/* I wanted the heading to be top centered */
-h1 {
-  font-size: 30px;
-}
-
-body {
-  background-image: url(background\ 1.png);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* I want the background to fit the theme of Rich Brown's website. 
-Due to not having enough technical skills and knowledge to code my desired background, I used Canvas to design the background and imported it to VSC */
+/*REFERENCES
+TUTORIAL I USED TO HELP ME WITH CODING: https://www.w3schools.com/html/default.asp
+TUTORIAL I USED TO HELP ME WITH CODING: https://developer.mozilla.org/en-US/docs/Web/HTML
+TUROTIAL ON HOW TO SET UP BACKGROUND IMAGE: https://www.youtube.com/watch?v=_oFWg_NlKdo
+GOOGLE FONT: https://fonts.google.com/selection/embed
+FREE BEACH ICON: https://iconduck.com/icons/114185/beach
+FREE BEACH BACKGROUND: https://unsplash.com/s/photos/beach
+RICH BROWN WEBSITE: https://www.richbrown.info/ */
