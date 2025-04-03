@@ -37,6 +37,7 @@ body {
 h1 {
   text-align: center;
   font-size: 40px;
+/*Font size catches the users attention of what the site is about, while also not making it too big and filling up the entire page */
   font-weight: bold;
   margin-top: 20px;
   margin-bottom: 30px;
@@ -53,7 +54,7 @@ h1 {
   padding: 20px;
   gap: 25px;
 }
-/* I decided to incorporate grid containers because it makes my answers and questions stand out, not blending in with the background */
+/* I decided to incorporate grid containers because it makes my answers or questions stand out and easy to read, not blending in with the background to make it harder for users to read*/
 
 .grid-box {
   display: flex;
@@ -89,11 +90,11 @@ h1 {
   background-color: rgba(222, 229, 239, 0.8);
   font-weight: bold; 
 } */
-/*I removed it because i found it too bulky and not pleasant to read. The excess space was filling the page too much and i wanted it to be wrapped around the text. */
+/*I removed it because i found it too bulky and not pleasant to read. The excess space of the grids was filling the page too much and i wanted it to be wrapped around the text. */
 
 h3 {
   background-color: rgb(241, 220, 196);
-  /*I choose this colour because it reminds me of the sand */
+  /*I choose this colour because it reminds me of the sand. Since I'm doing a beach themed aesthetic for my site, i used a combination of yellow and dark blue. */
   color: rgb(0, 0, 0);
   padding: 15px;
   border-radius: 5px;
@@ -117,7 +118,7 @@ li {
   margin-top: 5px;
   font-family: "Sen", sans-serif;
 }
-
+/* I avoided bright colours because i did not want it to be straining and eye-flashing. I found out some people prefer subtle, soft and pale colour palletes, thus i chosen pale and soft colours */
 h2 {
   font-size: 40px;
   font-family: "Sen", sans-serif;
