@@ -3,53 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jessica Vuong Assignment 2</title>
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
+    <title>Music for Study</title>
     <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
-    <h1>Music for Study</h1>
-
-    <button class="login-button">Log In</button>
+    <header>
+      <div class="logo-container">
+        <i class="fas fa-book-open"></i>
+        <h1>Music for Study</h1>
+      </div>
+      <button class="login-button">Log In</button>
+    </header>
 
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Study Tools</a></li>
-        <li><a href="#">Subjects</a></li>
-        <li><a href="#">Playlist</a></li>
-        <li><a href="#">Timer</a></li>
+        <li>
+          <a href="#" class="active"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-tools"></i> Study Tools</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-book"></i> Subjects</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-music"></i> Playlist</a>
+        </li>
       </ul>
     </nav>
 
-    <div class="timer-container">
-      <button id="startButton">START</button>
+    <main>
+      <div class="music-player">
+        <h2>Currently Playing</h2>
+        <p class="track-name">Ambient Waves</p>
 
-      <div id="timerSetup" style="display: none">
-        <h2>Adjust Timer</h2>
-        <label for="hours">Hours:</label>
-        <input type="number" id="hours" min="0" max="24" value="0" />
-        <label for="minutes">Minutes:</label>
-        <input type="number" id="minutes" min="0" max="59" value="0" />
-        <label for="seconds">Seconds:</label>
-        <input type="number" id="seconds" min="0" max="59" value="0" />
-        <button id="startTimerButton">Start Timer</button>
+        <div class="album-art-container">
+          <div class="album-art">
+            <img src="album cover.jpg" alt="Album Art" id="albumArt" />
+          </div>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress" id="audioProgress"></div>
+          </div>
+          <div class="time-info">
+            <span id="currentTime">00:00</span>
+            <span id="duration">00:00</span>
+          </div>
+        </div>
+
+        <div class="player-controls">
+          <button id="prevTrack">
+            <img
+              src="icons8-skip-to-start-90.png"
+              alt="Previous"
+              class="control-icon"
+            />
+          </button>
+          <button id="playPauseBtn">
+            <img
+              src="icons8-play-90.png"
+              alt="Play"
+              class="control-icon"
+              id="playPauseIcon"
+            />
+          </button>
+          <button id="nextTrack">
+            <img src="icons8-end-90.png" alt="Next" class="control-icon" />
+          </button>
+          <div class="volume-control">
+            <img
+              src="icons8-audio-90.png"
+              alt="Volume"
+              class="control-icon"
+              id="volumeIcon"
+            />
+            <input
+              type="range"
+              id="volumeSlider"
+              min="0"
+              max="1"
+              step="0.1"
+              value="0.7"
+            />
+          </div>
+        </div>
       </div>
+    </main>
 
-      <div id="countdown" style="display: none">
-        <h3>Time Left: <span id="timeDisplay">00:00:00</span></h3>
-      </div>
-
-      <!-- TIMES UP! Button (Initially hidden) -->
-      <button id="timesUpButton" style="display: none" onclick="resetTimer()">
-        TIMES UP!
-      </button>
-    </div>
-
-    <audio id="relaxAudio" loop>
+    <!-- Audio element for our music -->
+    <audio id="relaxAudio">
       <source src="erokia_ambient-wave-56-msfxp7-78.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
     </audio>
   </body>
 </html>
