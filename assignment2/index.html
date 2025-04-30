@@ -1,11 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jessica Vuong Assignment 2</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="reset.css" />
+  </head>
+  <body>
+    <h1>Music for Study</h1>
+
+    <button class="login-button">Log In</button>
+
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Study Tools</a></li>
+        <li><a href="#">Subjects</a></li>
+        <li><a href="#">Playlist</a></li>
+        <li><a href="#">Timer</a></li>
+      </ul>
+    </nav>
+
+    <div class="timer-container">
+      <button id="startButton">START</button>
+
+      <div id="timerSetup" style="display: none">
+        <h2>Adjust Timer</h2>
+        <label for="hours">Hours:</label>
+        <input type="number" id="hours" min="0" max="24" value="0" />
+        <label for="minutes">Minutes:</label>
+        <input type="number" id="minutes" min="0" max="59" value="0" />
+        <label for="seconds">Seconds:</label>
+        <input type="number" id="seconds" min="0" max="59" value="0" />
+        <button id="startTimerButton">Start Timer</button>
+      </div>
+
+      <div id="countdown" style="display: none">
+        <h3>Time Left: <span id="timeDisplay">00:00:00</span></h3>
+      </div>
+
+      <!-- TIMES UP! Button (Initially hidden) -->
+      <button id="timesUpButton" style="display: none" onclick="resetTimer()">
+        TIMES UP!
+      </button>
+    </div>
+
+    <audio id="relaxAudio" loop>
+      <source src="erokia_ambient-wave-56-msfxp7-78.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </body>
 </html>

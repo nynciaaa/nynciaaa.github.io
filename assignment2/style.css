@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 30px; /* You can adjust this value to add spacing from the top */
+}
+
+.login-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background-color: #6f21d5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.login-button:hover {
+  background-color: #4a149e;
+}
+
+nav {
+  background-color: #dad4f8;
+  padding: 10px 0;
+  border: 2px solid #000000; /* Add border around the nav bar */
+  border-radius: 8; /* Optional: rounded corners */
+  margin: 20px; /* Optional: spacing around the nav */
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 20px;
+  font-size: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #6f21d5;
+}
+
+#startButton {
+  background-color: #6f21d5;
+  color: white;
+  font-size: 50px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  margin-top: 100px;
+}
+
+#startButton:hover {
+  background-color: #4a149e;
+}
+
+.timer-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.timer-container input {
+  width: 60px;
+  padding: 10px;
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.timer-container button {
+  padding: 8px 16px;
+  font-size: 50px;
+  margin: 10px;
+  background-color: #6f21d5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.timer-container button:hover {
+  background-color: #4a149e;
+}
+
+#countdown {
+  margin-top: 20px;
+}
+
+#timesUpButton {
+  background-color: #d9534f;
+  color: white;
+  font-size: 50px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center it */
+  display: none; /* Initially hidden */
+}
+
+#timesUpButton:hover {
+  background-color: #c9302c;
+}
