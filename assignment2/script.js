@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Login button placeholder function
   loginButton.addEventListener("click", function () {
-    alert("Login feature would go here!");
+    alert("Login feature would go here");
   });
 
   // Function to play or pause the song
