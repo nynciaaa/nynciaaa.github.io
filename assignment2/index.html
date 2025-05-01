@@ -6,7 +6,8 @@
     <title>Music for Study</title>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,6 +19,22 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
+
+  <!-- I have chosen "Music for Study" for my assignment 2 -->
+  <!--  I am aiming for a clean and simple layout to avoid distractions, thereby making it easy to concentrate. My websie intends to
+help people focus while studying by playing calming and relaxing music in the background. The colour pallete I've chosen were brown, orange,yellow and red because it
+reminds me of books and autumn, evoking a calm and warm atomosphere. It is the kind of mood I want to focus on studying in a cafe or library. */
+/* brown: books/bookshelves, aged paper
+red and orange: warmth, energy
+yellow: soft lighting, golden hour
+
+Fonts and icons were chosen for clarity and readability (serif fonts to reinforce the book-like mood)
+  -->
+
+  <!--  The interface will include visual feedback(volume control, update progress bar ect.. ) making the site feel interactive and responsive without being distracting.-->
+
+  <!-- I wanted to include a focus timer but i did not have technical knowledge or skills to implement it into the design. I tried to watch a few tutorials but it took too much time
+   Before the idea was removed, The timer will be used so users can keep track of  how many hours they've studied and to enhance the study experience. When the focus timer is active, music will be played in the background. When time’s up, music will slowly fade out. Afterwards, users have the option to restart the timer and adjust it to their liking -->
   <body>
     <header>
       <div class="logo-container">
@@ -27,79 +44,148 @@
       <button class="login-button">Log In</button>
     </header>
 
+    <!-- The webiste will include a playlist with progress bar, subject folders where users can import their notes, and navigation bar. -->
+    <!-- The navigation bar includes four key sections: Home, Study Tools, Subjects, and Playlist. These were chosen to keep the experience simple and relevant for students seeking focus. -->
     <nav>
       <ul>
         <li>
-          <a href="#"><i class="fas fa-tools"></i>Home</a>
+          <a href="#"><i class="fas fa-home"></i>Home</a>
         </li>
+        <!-- the home page will serve as a welcoming landing point for the users. -->
         <li>
-          <a href="#"><i class="fas fa-tools"></i> Study Tools</a>
+          <a href="#"><i class="fas fa-tools"></i>Study Tools</a>
         </li>
+        <!-- this section is used for utility for users, such as timers, to-do lists, flashcards, study tips or notepad features -->
         <li>
-          <a href="#"><i class="fas fa-book"></i> Subjects</a>
+          <a href="#"><i class="fas fa-book"></i>Subjects</a>
         </li>
+        <!-- this will be a  folder system where users can organize topics or courses, giving a sense of control and personalization, increasing engagement. -->
         <li>
-          <a href="#"><i class="fas fa-music"></i> Playlist</a>
+          <a href="#"><i class="fas fa-music"></i>Playlist</a>
+          <!-- The Playlist tab leads directly to the core feature of the site -->
         </li>
       </ul>
     </nav>
 
+    <!-- the "fas fa-music" code was from a website. I was scrolling through a reddit post and they recommended using this site for icons. -->
+    <!-- https://fontawesome.com/icons/packs/classic -->
     <main>
-      <div class="music-player">
-        <h2>Currently Playing</h2>
-        <p class="track-name">Ambient Waves</p>
+      <div class="content-container">
+        <!-- Left side: Music Player -->
+        <div class="player-container">
+          <div class="music-player">
+            <h2>Currently Playing</h2>
+            <p class="track-name">Ambient Waves</p>
+            <!-- The images below are used from pexel. -->
+            <div class="album-art-container">
+              <div class="album-art">
+                <img src="album cover.jpg" alt="Album Art" id="albumArt" />
+                <img src="lofi.jpg" alt="Album Art" id="albumArt" />
+                <img src="relaxing.jpg" alt="Album Art" id="albumArt" />
+              </div>
+            </div>
+            <!-- The core feature of this site is the embedded playlist with a media player. It will include a progress bar to help users keep track of time as they study. This design choice supports the study context by encouraging focused sessions without being intrusive.
+the media player UI is intentionally minimal to avoid visual noise and improve usability.
+play, pause, and skip buttons are easy to access, with clear feedback (eg. changing icons).  Not only that, the volume control adds flexibility 
+The music/audio choices were inspired by "Best of lofi hip hop 2021 ✨ [beats to relax/study to]" on YouTube https://www.youtube.com/watch?v=n61ULEU7CO0"
+The audio I used were provided from canvas and on a copyright free music website "Freesound"
+"-->
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div class="progress" id="audioProgress"></div>
+              </div>
+              <div class="time-info">
+                <span id="currentTime">00:00</span>
+                <span id="duration">00:00</span>
+              </div>
+            </div>
 
-        <div class="album-art-container">
-          <div class="album-art">
-            <img src="album cover.jpg" alt="Album Art" id="albumArt" />
+            <div class="player-controls">
+              <button id="prevTrack">
+                <img
+                  src="icons8-skip-to-start-90.png"
+                  alt="Previous"
+                  class="control-icon"
+                />
+              </button>
+              <button id="playPauseBtn">
+                <img
+                  src="icons8-play-90.png"
+                  alt="Play"
+                  class="control-icon"
+                  id="playPauseIcon"
+                />
+              </button>
+              <button id="nextTrack">
+                <img src="icons8-end-90.png" alt="Next" class="control-icon" />
+              </button>
+              <div class="volume-control">
+                <img
+                  src="icons8-audio-90.png"
+                  alt="Volume"
+                  class="control-icon"
+                  id="volumeIcon"
+                />
+                <input
+                  type="range"
+                  id="volumeSlider"
+                  min="0"
+                  max="1"
+                  step="0.1"
+                  value="0.7"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- These icon were provided from canvas -->
+
+          <!-- Subject Folders -->
+          <div class="folders-container">
+            <h3>Your Study Folders</h3>
+            <div class="folders-grid">
+              <div class="folder">
+                <i class="fas fa-folder folder-icon"></i>
+                <p class="folder-name">Mathematics</p>
+              </div>
+              <div class="folder">
+                <i class="fas fa-folder folder-icon"></i>
+                <p class="folder-name">English</p>
+              </div>
+              <div class="folder">
+                <i class="fas fa-folder folder-icon"></i>
+                <p class="folder-name">Science</p>
+              </div>
+              <div class="folder">
+                <i class="fas fa-folder folder-icon"></i>
+                <p class="folder-name">History</p>
+              </div>
+              <div class="folder">
+                <i class="fas fa-folder folder-icon"></i>
+                <p class="folder-name">Languages</p>
+              </div>
+            </div>
           </div>
         </div>
+        <!--Users can create folders for different school subjects. This allows organization and personalization for users. This is similar to keeping notebooks or binders for different classes
+ and this feature was added to reflect how students often compartmentalize their study sessions by topic -->
 
-        <div class="progress-container">
-          <div class="progress-bar">
-            <div class="progress" id="audioProgress"></div>
-          </div>
-          <div class="time-info">
-            <span id="currentTime">00:00</span>
-            <span id="duration">00:00</span>
-          </div>
-        </div>
-
-        <div class="player-controls">
-          <button id="prevTrack">
-            <img
-              src="icons8-skip-to-start-90.png"
-              alt="Previous"
-              class="control-icon"
-            />
-          </button>
-          <button id="playPauseBtn">
-            <img
-              src="icons8-play-90.png"
-              alt="Play"
-              class="control-icon"
-              id="playPauseIcon"
-            />
-          </button>
-          <button id="nextTrack">
-            <img src="icons8-end-90.png" alt="Next" class="control-icon" />
-          </button>
-          <div class="volume-control">
-            <img
-              src="icons8-audio-90.png"
-              alt="Volume"
-              class="control-icon"
-              id="volumeIcon"
-            />
-            <input
-              type="range"
-              id="volumeSlider"
-              min="0"
-              max="1"
-              step="0.1"
-              value="0.7"
-            />
-          </div>
+        <!-- Right side: Playlist -->
+        <div class="playlist-sidebar">
+          <h3>Your Playlist</h3>
+          <ul class="playlist-items">
+            <li class="active">
+              <span class="track-number">1</span>
+              <span class="track-info">Ambient Waves</span>
+            </li>
+            <li>
+              <span class="track-number">2</span>
+              <span class="track-info">Chill Lofi</span>
+            </li>
+            <li>
+              <span class="track-number">3</span>
+              <span class="track-info">Relaxing Beat</span>
+            </li>
+          </ul>
         </div>
       </div>
     </main>
@@ -107,6 +193,27 @@
     <!-- Audio element for the music -->
     <audio id="relaxAudio">
       <source src="erokia_ambient-wave-56-msfxp7-78.mp3" type="audio/mpeg" />
+      <source src="Chill Lofi.wav" type="audio/mpeg" />
+      <source
+        src="768428__lolamoore__relaxing-lo-fi-atmosphere-for-peaceful-moments.mp3"
+        type="audio/mpeg"
+      />
     </audio>
   </body>
 </html>
+
+<!-- REFERENCES
+ https://fontawesome.com/icons/packs/classic - CODE FOR ICONS 
+ https://www.youtube.com/watch?v=n61ULEU7CO0&t=2067s - INSPIRATION FOR MUSIC CHOICES
+https://icons8.com/ - DOWNLOADED ICONS
+https://freesound.org/ - MUSIC SOURCE (others are from canvas provided)
+https://www.pexels.com/ - ALBUM COVER 
+
+https://www.w3schools.com/html/default.asp - TUTORIALS TO HELP ME WITH CODING (links below)
+https://developer.mozilla.org/en-US/docs/Web/HTML
+https://www.youtube.com/watch?v=NcTjJtnGE_w
+https://stackoverflow.com/questions/60065296/how-can-i-make-a-song-progress-bar-for-my-audio-player
+https://fireship.io/ 
+https://code.visualstudio.com/docs
+https://www.codecademy.com/
+-->

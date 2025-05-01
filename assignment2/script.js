@@ -1,5 +1,5 @@
+// all the elements we need from the HTML
 document.addEventListener("DOMContentLoaded", function () {
-  // Get all the elements we need from the HTML
   const audio = document.getElementById("relaxAudio");
   const playPauseBtn = document.getElementById("playPauseBtn");
   const playPauseIcon = document.getElementById("playPauseIcon");
@@ -11,36 +11,50 @@ document.addEventListener("DOMContentLoaded", function () {
   const currentTimeDisplay = document.getElementById("currentTime");
   const durationDisplay = document.getElementById("duration");
   const loginButton = document.querySelector(".login-button");
+  const playlistItems = document.querySelectorAll(".playlist-items li");
+  const folders = document.querySelectorAll(".folder");
+  const trackNameDisplay = document.querySelector(".track-name");
+  const albumArt = document.getElementById("albumArt");
 
-  // The audio information
-  const songTitle = "Ambient Waves";
-  const songFile = "erokia_ambient-wave-56-msfxp7-78.mp3";
-  const albumCoverImage = "album cover.jpg";
+  // music from playlist/ playlist data structure
+  const playlist = [
+    {
+      title: "Ambient Waves",
+      file: "erokia_ambient-wave-56-msfxp7-78.mp3",
+      cover: "album cover.jpg",
+    },
+    {
+      title: "Chill Lofi",
+      file: "Chill Lofi.wav",
+      cover: "lofi.jpg",
+    },
+    {
+      title: "Relaxing Beat",
+      file: "768428__lolamoore__relaxing-lo-fi-atmosphere-for-peaceful-moments.mp3",
+      cover: "relaxing.jpg",
+    },
+  ];
+  let currentTrackIndex = 0;
 
   // images sources for icon
   const playIcon = "icons8-play-90.png";
   const pauseIcon = "icons8-pause-90.png";
   const volumeOnIcon = "icons8-audio-90.png";
   const volumeOffIcon = "icons8-no-audio-90.png";
-
-  // Set the initial volume
+  // intial volume for music
   audio.volume = 0.7;
 
-  // Add click listeners to our buttons
-  playPauseBtn.addEventListener("click", playOrPauseSong);
-  prevButton.addEventListener("click", restartSong);
-  nextButton.addEventListener("click", function () {
-    // For simplicity, we'll just restart the song when next is clicked
-    audio.currentTime = 0;
-    audio.play();
-    updatePlayButton(false); // Show pause icon
-  });
+  loadTrack(currentTrackIndex);
 
-  // Add change listener to volume slider
+  // click listeners for the buttons
+  playPauseBtn.addEventListener("click", playOrPauseSong);
+  prevButton.addEventListener("click", prevTrack);
+  nextButton.addEventListener("click", nextTrack);
+
   volumeSlider.addEventListener("input", function () {
     audio.volume = volumeSlider.value;
 
-    // Update the volume icon
+    // update the volume icon
     if (volumeSlider.value == 0) {
       volumeIcon.src = volumeOffIcon;
     } else {
@@ -48,66 +62,107 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Add click listener to volume icon to mute/unmute
   volumeIcon.addEventListener("click", function () {
     if (audio.muted) {
-      // Unmute the audio
+      // unmute the audio
       audio.muted = false;
       volumeIcon.src = volumeOnIcon;
     } else {
-      // Mute the audio
+      // mute the audio
       audio.muted = true;
       volumeIcon.src = volumeOffIcon;
     }
   });
 
-  // Update progress bar as song plays
+  // progress bar for when the song plays
   audio.addEventListener("timeupdate", updateProgress);
 
-  // Update duration display when song loads
+  // update duration display when song loads
   audio.addEventListener("loadedmetadata", function () {
     durationDisplay.textContent = formatTime(audio.duration);
   });
 
-  // Click on progress bar to skip to that part of the song
   document
     .querySelector(".progress-bar")
     .addEventListener("click", function (e) {
-      // Get the width of the progress bar
       const width = this.clientWidth;
-      // Get the click position
       const clickPosition = e.offsetX;
-      // Calculate the percentage of the bar clicked
       const percent = clickPosition / width;
-      // Set the song time to that percentage
       audio.currentTime = percent * audio.duration;
     });
 
-  // Login button placeholder function
   loginButton.addEventListener("click", function () {
     alert("Login feature would go here");
   });
 
-  // Function to play or pause the song
-  function playOrPauseSong() {
-    if (audio.paused) {
-      // If paused, play the song
-      audio.play();
-      updatePlayButton(false); // Show pause icon
+  playlistItems.forEach(function (item, index) {
+    item.addEventListener("click", function () {
+      playlistItems.forEach((item) => item.classList.remove("active"));
+      this.classList.add("active");
+      loadTrack(index);
+      playTrack();
+    });
+  });
+
+  function loadTrack(index) {
+    currentTrackIndex = index;
+
+    audio.src = playlist[index].file;
+
+    trackNameDisplay.textContent = playlist[index].title;
+
+    albumArt.src = playlist[index].cover;
+
+    playlistItems.forEach((item, i) => {
+      if (i === index) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    });
+    progressBar.style.width = "0%";
+    currentTimeDisplay.textContent = "00:00";
+    audio.load();
+  }
+
+  function playTrack() {
+    audio.play();
+    updatePlayButton(false);
+  }
+
+  // Function to pause the track
+  function pauseTrack() {
+    audio.pause();
+    updatePlayButton(true);
+  }
+
+  function prevTrack() {
+    if (audio.currentTime > 3) {
+      audio.currentTime = 0;
     } else {
-      // If playing, pause the song
-      audio.pause();
-      updatePlayButton(true); // Show play icon
+      let prevIndex = currentTrackIndex - 1;
+      if (prevIndex < 0) {
+        prevIndex = playlist.length - 1;
+      }
+      loadTrack(prevIndex);
+      playTrack();
     }
   }
 
-  // Function to restart the song or go back to beginning
-  function restartSong() {
-    audio.currentTime = 0;
-    updateProgress();
+  function nextTrack() {
+    let nextIndex = (currentTrackIndex + 1) % playlist.length;
+    loadTrack(nextIndex);
+    playTrack();
   }
 
-  // Function to update the play/pause button
+  function playOrPauseSong() {
+    if (audio.paused) {
+      playTrack();
+    } else {
+      pauseTrack();
+    }
+  }
+
   function updatePlayButton(isPlayIcon) {
     if (isPlayIcon) {
       playPauseIcon.src = playIcon;
@@ -118,33 +173,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Function to update the progress bar
+  // function to update the progress bar
   function updateProgress() {
     if (audio.duration) {
-      // Calculate percentage played
       const percent = (audio.currentTime / audio.duration) * 100;
-      // Update progress bar width
       progressBar.style.width = percent + "%";
-      // Update current time display
       currentTimeDisplay.textContent = formatTime(audio.currentTime);
     }
   }
 
-  // Function to format time as MM:SS
-  function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
+  //function formatTime(seconds) {
+  //const minutes = Math.floor(seconds / 60);
+  // const remainingSeconds = Math.floor(seconds % 60);
+  //const formattedMinutes = String(minutes).padStart(2, "0");
+  // const formattedSeconds = String(remainingSeconds).padStart(2, "0")
+  //return `${formattedMinutes}:${formattedSeconds}`;
+  //}
+  // Originally I wanted to include a timer for the study site but it was too complicated and time consuming
 
-    // Add leading zero if needed
-    const formattedMinutes = String(minutes).padStart(2, "0");
-    const formattedSeconds = String(remainingSeconds).padStart(2, "0");
-
-    return `${formattedMinutes}:${formattedSeconds}`;
-  }
-
-  // When song ends, reset to beginning
   audio.addEventListener("ended", function () {
-    audio.currentTime = 0;
-    updatePlayButton(true); // Show play icon
+    nextTrack();
   });
 });
