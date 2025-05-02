@@ -59,6 +59,9 @@ h1 {
 }
 
 /* Navigation - UPDATED TO FIX SPACING */
+/* uses flexbox to horizontally center the menu items.
+this CSS creates a horizontal navigation bar with centered menu items, where each item has an icon followed by text.
+when a user hovers over or selects a menu item, it changes color to provide visual feedback.*/
 nav {
   background-color: rgb(93, 64, 55);
   border-bottom: 3px solid rgb(255, 112, 67);
@@ -364,6 +367,15 @@ main {
   text-align: center;
 }
 
+/* the "@media" contains media queries that create a responsive design that adapts to different screen sizes. So basically,
+when the screen width is 900px or less it changes the .content-container from a row layout to a column layout (flex-direction: column).
+afterwards it makes .playlist-sidebar take up the full width of its container (max-width: 100%)
+
+For the "@media(768px)it ensures the screen width is 768 pixels or less. It changes the header from a row layout to a column layout (flex-direction: column).
+It also reduces the padding inside the header to 15px and sets the gap between elements in the header to 15px
+
+this ensures the the site looks good on different devices
+ */
 @media (max-width: 900px) {
   .content-container {
     flex-direction: column;

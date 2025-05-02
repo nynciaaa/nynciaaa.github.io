@@ -95,6 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
     alert("Login feature would go here");
   });
 
+  // the code below adds event listeners to a set of playlist items in the music player application. 
+  // it loops through each element in playlistItems
+  // this loads the selected track from the playlist
   playlistItems.forEach(function (item, index) {
     item.addEventListener("click", function () {
       playlistItems.forEach((item) => item.classList.remove("active"));
@@ -182,14 +185,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  //function formatTime(seconds) {
-  //const minutes = Math.floor(seconds / 60);
-  // const remainingSeconds = Math.floor(seconds % 60);
-  //const formattedMinutes = String(minutes).padStart(2, "0");
-  // const formattedSeconds = String(remainingSeconds).padStart(2, "0")
-  //return `${formattedMinutes}:${formattedSeconds}`;
-  //}
-  // Originally I wanted to include a timer for the study site but it was too complicated and time consuming
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const formattedSeconds = String(remainingSeconds).padStart(2, "0");
+    return `${formattedMinutes}:${formattedSeconds}`;
+  }
+  // this function converts a total number of seconds into a formatted time string in the format
+  // first it takes the  number of seconds as input
+  // calculates how many full minutes are in that time (by dividing by 60)
+  // calculates the remaining seconds
+  // ensures both numbers have two digits by adding leading zeros if needed (using padstart())
+  // returns the formatted time string like "04:35"
+  // this was used for media players to display audio/video duration and current position
 
   audio.addEventListener("ended", function () {
     nextTrack();
