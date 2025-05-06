@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     alert("Login feature would go here");
   });
 
-  // the code below adds event listeners to a set of playlist items in the music player application. 
+  // the code below adds event listeners to a set of playlist items in the music player application.
   // it loops through each element in playlistItems
   // this loads the selected track from the playlist
   playlistItems.forEach(function (item, index) {
