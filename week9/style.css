@@ -1,0 +1,155 @@
+/* https://colorhunt.co/palette/1a120b3c2a21d5cea3e5e5cb */
+
+body {
+  background-color: #1a120b;
+  display: flex;
+  text-align: center;
+  margin: auto;
+  max-width: 1000px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: #e5e5cb;
+  /* color: #3c2a21; */
+  font-size: 1.1rem;
+  gap: 1.5rem;
+}
+
+.outer {
+  border: 2px dashed #e5e5cb7a;
+  width: 400px;
+  min-height: 200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  opacity: 1;
+  /* background-color: cornsilk; */
+  transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.5s ease;
+}
+
+/* button hover animation */
+button {
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  background: cornflowerblue;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.4s ease, scale 0.4s ease, rotate 0.4s ease;
+}
+
+button:hover {
+  background-color: rgb(4, 40, 106);
+  scale: 0.9;
+  rotate: -10deg;
+}
+
+input {
+  padding: 5px;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  width: 8rem;
+  border: 6px solid crimson;
+  transition: border-color 0.5s linear, translate 0.5s linear;
+}
+
+input:hover {
+  border-color: coral;
+  transform: 30px 20px;
+}
+
+/* svg hover effect */
+#duck-icon {
+  cursor: pointer;
+  transition: fill 0.4s ease;
+}
+
+#duck-icon:hover {
+  fill: cornflowerblue;
+}
+
+#my-duck {
+  cursor: pointer;
+  transition: scale 0.4s ease;
+}
+
+#my-duck:hover {
+  scale: 0.9s;
+}
+
+.box{
+    background-color: purple;
+    animation-name: border-animation, box-animation;
+    animation-duration: 4s;
+    animation-iteration-count:  infinite;
+    animation-timing-function: linear;
+    border: 6px dashed coral;
+}
+
+@keyframes box-animation {
+    0% {
+        background-color: purple;
+    }
+    20% {
+        background-color: rgb(40, 73, 205);
+    }
+    40% {
+        background-color: rgb(75, 193, 134);
+    }
+    60% {
+        background-color: rgb(83, 70, 134);
+    }
+    80% {
+        background-color: rgb(214, 220, 153);
+    }
+    100% {
+        background-color: rgb(127, 249, 255);
+    }
+}
+
+@keyframes border-animation {
+    0% {
+        border-color: rgb(41, 0, 41);
+    }
+    20% {
+        border-color: rgb(0, 21, 105);
+    }
+    40% {
+        border-color: rgb(2, 108, 55);
+    }
+    60% {
+        border-color: rgb(45, 0, 223);
+    }
+    80% {
+        border-color: rgb(163, 176, 13);
+    }
+    100% {
+        border-color: rgb(1, 160, 169);
+    }
+}
+
+#spinner {
+    border: 6px solid #f3f3f3; /* Light grey */
+    border-top: 6px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation: spinner 2s linear infinite; /* Spin animation */
+  }
+  
+  @keyframes spinner {
+    0% {
+      rotate: 0deg;
+      /* transform: rotate(0deg); */
+    }
+    100% {
+      rotate: 360deg;
+      /* transform: rotate(360deg); */
+    }
+  }
