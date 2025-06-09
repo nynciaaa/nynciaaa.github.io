@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School Choices</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Start Screen -->
+        <div id="start-screen">
+            <h1>High School Choices</h1>
+            <p>Your decisions shape your character</p>
+            <button id="start-button" onclick="startGame()">Begin Your Story</button>
+        </div>
+
+        <!-- Background -->
+        <div id="background"></div>
+
+        <!-- Character Portrait -->
+        <div id="character-container">
+            <div id="character-portrait"></div>
+        </div>
+
+        <!-- Dialogue Container -->
+        <div id="dialogue-container" class="hidden">
+            <div id="nameplate"></div>
+            <div id="dialogue-text"></div>
+            <div id="choices-container"></div>
+        </div>
+
+        <!-- Moral Indicator -->
+        <div id="moral-indicator" class="hidden">
+            <div id="moral-bar">
+                <div id="moral-fill"></div>
+            </div>
+            <div id="moral-label">Moral Compass</div>
+        </div>
+
+        <!-- End Screen -->
+        <div id="end-screen">
+            <h2 id="end-title">Your Story Ends</h2>
+            <div id="end-badge"></div>
+            <p id="end-message"></p>
+            <div id="final-stats">
+                <div id="moral-score">Moral Score: <span id="final-moral">0</span></div>
+                <div id="ending-type">Path: <span id="final-path">Neutral</span></div>
+        </div>
+    </div>
+
+    <!-- Audio elements -->
+    <audio id="background-music" loop>
+        <source src="assets/music/background.mp3" type="audio/mpeg">
+        <source src="assets/music/background.ogg" type="audio/ogg">
+    </audio>
+
+    <audio id="good-music">
+        <source src="assets/music/good_ending.mp3" type="audio/mpeg">
+        <source src="assets/music/good_ending.ogg" type="audio/ogg">
+    </audio>
+
+    <audio id="bad-music">
+        <source src="assets/music/bad_ending.mp3" type="audio/mpeg">
+        <source src="assets/music/bad_ending.ogg" type="audio/ogg">
+    </audio>
+
+</body>
+</html>
