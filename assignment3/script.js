@@ -8,22 +8,22 @@ const ASSETS = {
   },
   characters: {
     sarah: {
-      neutral: "assets/characters/sarah_neutral.png",
-      happy: "assets/characters/sarah_happy.png",
-      sad: "assets/characters/sarah_sad.png",
-      angry: "assets/characters/sarah_angry.png",
-      worried: "assets/characters/sarah_worried.png",
+      neutral: "sarah_neutral.png",
+      happy: "sarah_happy.png",
+      sad: "sarah_sad.png",
+      angry: "sarah_angry.png",
+      worried: "sarah_worried.png",
     },
     teacher: {
-      neutral: "assets/characters/teacher_neutral.png",
-      happy: "assets/characters/teacher_happy.png",
-      disappointed: "assets/characters/teacher_disappointed.png",
-      stern: "assets/characters/teacher_stern.png",
+      neutral: "teacher_neutral.png",
+      happy: "teacher_happy.png",
+      disappointed: "teacher_disappointed.png",
+      stern: "teacher_stern.png",
     },
     bully: {
-      neutral: "assets/characters/bully_neutral.png",
-      smug: "assets/characters/bully_smug.png",
-      angry: "assets/characters/bully_angry.png",
+      neutral: "bully_neutral.png",
+      smug: "bully_smug.png",
+      angry: "bully_angry.png",
     },
   },
   music: {
@@ -81,13 +81,13 @@ const scenes = [
       {
         text: "Let's go talk to a teacher about this first.",
         next: "get_authority",
-        moral: 20,
+        moral: 30,
         type: "good",
       },
       {
         text: "I'll confront Jake directly and tell him to stop.",
         next: "confront_bully",
-        moral: 10,
+        moral: 20,
         type: "neutral",
       },
       {
