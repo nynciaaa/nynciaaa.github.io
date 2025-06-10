@@ -1,10 +1,10 @@
 // ASSET CONFIGURATION - EDIT THESE PATHS TO MATCH YOUR FILES
 const ASSETS = {
   backgrounds: {
-    classroom: "assets/backgrounds/classroom.jpg",
-    hallway: "assets/backgrounds/hallway.jpg",
-    cafeteria: "assets/backgrounds/cafeteria.jpg",
-    office: "assets/backgrounds/office.jpg",
+    classroom: "classroom.jpg",
+    hallway: "hallway.jpg",
+    cafeteria: "cafeteria.jpg",
+    office: "office.jpg",
   },
   characters: {
     sarah: {
@@ -27,9 +27,9 @@ const ASSETS = {
     },
   },
   music: {
-    background: "assets/music/background.mp3",
-    good_ending: "assets/music/good_ending.mp3",
-    bad_ending: "assets/music/bad_ending.mp3",
+    background: "assets/music/background music.wav",
+    good_ending: "assets/music/good music.wav",
+    bad_ending: "assets/music/bad music.wav",
   },
 };
 
@@ -73,7 +73,7 @@ const scenes = [
   },
   {
     id: "help_sarah",
-    background: "hallway",
+    background: "classroom",
     character: { name: "sarah", emotion: "happy" },
     speaker: "Sarah",
     text: "Thank you so much! It means a lot to have someone willing to help. Look, here comes Jake - he's the main bully.",
@@ -207,7 +207,7 @@ const endings = {
     type: "good",
     message:
       "Your courage and compassion have made the school a better place. Sarah and many other students feel safer because of your actions. You've learned that standing up for others, even when it's difficult, is what true character is about. The administration implements new anti-bullying policies, and you become a respected voice for positive change.",
-    music: "good_ending",
+    music: "good_music",
   },
   neutral_ending: {
     title: "The Middle Ground",
@@ -215,7 +215,7 @@ const endings = {
     type: "neutral",
     message:
       "You navigated the social complexities of high school without making waves. While you didn't actively harm anyone, you also missed opportunities to make a real difference. Sometimes the middle path is safe, but it doesn't always lead to meaningful change. You've learned that neutrality has its own consequences.",
-    music: "background",
+    music: "neutral_music",
   },
   bad_ending: {
     title: "The Dark Path",
@@ -223,7 +223,7 @@ const endings = {
     type: "bad",
     message:
       "Your choices have led you down a troubling path. By choosing self-interest over compassion, you've contributed to a culture of cruelty and fear. Sarah and other vulnerable students suffer because of the environment you helped create. This ending serves as a reminder that our choices have real consequences for others.",
-    music: "bad_ending",
+    music: "bad_music",
   },
   redemption: {
     title: "Second Chances",
@@ -231,7 +231,7 @@ const endings = {
     type: "neutral",
     message:
       "Despite some poor initial choices, you found the strength to do what's right when it mattered most. Everyone deserves a second chance, and you've proven that people can change and grow. Your journey shows that it's never too late to choose compassion over cruelty.",
-    music: "good_ending",
+    music: "good_music",
   },
 };
 
