@@ -1,4 +1,4 @@
-// ASSET CONFIGURATION - EDIT THESE PATHS TO MATCH YOUR FILES
+// ASSET CONFIGURATION
 const ASSETS = {
   backgrounds: {
     classroom: "classroom.jpg",
@@ -43,6 +43,19 @@ let gameData = {
 };
 
 // STORY SCENES WITH MORAL CHOICES
+// This array stores individual scene objects that define the narrative flow and player interactions
+// Each scene will include:
+// - a unique 'id' for tracking and navigation between scenes
+// - a 'background' to set the visual context (e.g., "classroom")
+// - a 'character' object containing the character's name and current emotion, which can be used to update the portrait display
+// - 'speaker' to show who is talking in the dialogue box
+// - 'text' which contains the dialogue or narration shown to the player
+// - 'choices' is an array of possible player responses at this point, each with:
+//     - 'text' shown as a button option
+//     - 'next' specifying the id of the scene that follows based on the player's choice
+//     - 'moral' score impact that adjusts the player's morality meter positively or negatively
+//     - 'type' categorizing the choice as "good", "neutral", or "bad" to track the player's ethical alignment
+// This structure helps me to enable branching narrative paths, allowing players to influence the story's direction and ending through their moral decisions.
 const scenes = [
   {
     id: "intro",
@@ -71,12 +84,27 @@ const scenes = [
       },
     ],
   },
-  {
+ {
     id: "help_sarah",
     background: "classroom",
     character: { name: "sarah", emotion: "happy" },
     speaker: "Sarah",
-    text: "Thank you so much! It means a lot to have someone willing to help. Look, here comes Jake - he's the main bully.",
+    text: "Thank you!",
+    choices: [
+      {
+        text: "No problem!",
+        next: "help_sarah1",
+        moral: 15,
+        type: "good",
+      },
+    ],
+  },
+  {
+    id: "help_sarah1",
+    background: "classroom",
+    character: { name: "sarah", emotion: "happy" },
+    speaker: "Sarah",
+    text: "It means a lot to have someone willing to help. Look, here comes Jake - he's the main bully.",
     choices: [
       {
         text: "Let's go talk to a teacher about this first.",
@@ -134,7 +162,7 @@ const scenes = [
     choices: [
       {
         text: "Wait, I'm sorry. That was cruel of me to say.",
-        next: "apologize",
+        next: "apologise",
         moral: 10,
         type: "good",
       },
@@ -146,18 +174,83 @@ const scenes = [
       },
     ],
   },
+   {
+    id: "apologise",
+    background: "hallway",
+    character: { name: "sarah", emotion: "sad" },
+    speaker: "Sarah",
+    text: "Really..? I don't believe you.",
+    choices: [
+      {
+        text: "Yes. Let me make it up to you. I promise.",
+        next: "redemption?",
+        moral: 25,
+        type: "good",
+      },
+      {
+        text: "Haha. Just kidding.",
+        next: "cruel_path",
+        moral: -25,
+        type: "bad",
+      },
+    ],
+
+  },
+     {
+    id: "redemption?",
+    background: "hallway",
+    character: { name: "sarah", emotion: "neutral" },
+    speaker: "Sarah",
+    text: "How?",
+    choices: [
+      {
+        text: "Let's hang out together after class. I'll make up for the things I've said to you.",
+        next: "redemption",
+        moral: 30,
+        type: "good",
+      },
+      {
+        text: "I'll beat him up for you.",
+        next: "bad_ending",
+        moral: 10,
+        type: "bad",
+      },
+    ],
+  },
   {
     id: "get_authority",
     background: "office",
     character: { name: "teacher", emotion: "happy" },
     speaker: "Ms. Johnson",
-    text: "I'm glad you came to me about this bullying situation. We take these matters very seriously. Thank you for doing the right thing.",
+    text: "I'm glad you came to me about this bullying situation. We take these matters very seriously.",
     choices: [
       {
         text: "I just want everyone to feel safe at school.",
-        next: "good_ending",
-        moral: 30,
+        next: "teacher",
+        moral: 25,
         type: "good",
+      },
+    ],
+  },
+ {
+    id: "teacher",
+    background: "office",
+    character: { name: "teacher", emotion: "neutral" },
+    speaker: "Ms. Johnson",
+    text: "Thank you for doing the right thing. This isn't the first time a student has reported Jake to me.",
+    choices: [
+      {
+        text: "I hope he learns from his behaviour and become a better person.",
+        next: "good_ending",
+        moral: 5,
+        type: "good",
+    
+      },
+   {
+        text: "Whatever punishment he gets is deserved.",
+        next: "neutral_ending",
+        moral: -20,
+        type: "neutra;",
       },
     ],
   },
@@ -170,9 +263,30 @@ const scenes = [
     choices: [
       {
         text: "I'm not afraid of you, but I don't want to fight.",
-        next: "neutral_ending",
-        moral: 5,
+        next: "questionable",
+        moral: 10,
         type: "neutral",
+      },
+    ],
+  },
+  {
+    id: "questionable",
+    background: "hallway",
+    character: { name: "bully", emotion: "angry" },
+    speaker: "Jake",
+    text: "Why not? Are you scared.",
+    choices: [
+      {
+        text: "You know what. Bring it on!",
+        next: "bad_ending",
+        moral: -5,
+        type: "bad",
+      },
+        {
+        text: "Because we'll get in trouble and I don't want that to happen.",
+        next: "good_ending",
+        moral: 5,
+        type: "good",
       },
     ],
   },
@@ -185,7 +299,7 @@ const scenes = [
     choices: [
       {
         text: "Actually, this feels wrong. I can't do this.",
-        next: "redemption",
+        next: "avoidance",
         moral: 20,
         type: "good",
       },
@@ -194,6 +308,21 @@ const scenes = [
         next: "bad_ending",
         moral: -40,
         type: "bad",
+      },
+    ],
+  },
+ {
+    id: "avoidance",
+    background: "cafeteria",
+    character: { name: "bully", emotion: "angry" },
+    speaker: "Jake",
+    text: "Why not?",
+    choices: [
+      {
+        text: "I don't want to get in trouble.",
+        next: "neutral_ending",
+        moral: 0,
+        type: "neutral",
       },
     ],
   },
@@ -363,7 +492,7 @@ function updateMoralIndicator() {
   const percentage = ((gameData.moralScore + 100) / 200) * 100;
   fill.style.width = `${percentage}%`;
 
-  // Update color based on moral alignment
+  // moral alignment
   if (gameData.moralScore > 20) {
     fill.style.background = "linear-gradient(90deg, #00b894, #00cec9)";
   } else if (gameData.moralScore < -20) {
@@ -389,7 +518,7 @@ function determineEnding() {
 }
 
 function endGame(endingKey) {
-  // Determine ending based on moral score if not specified
+  
   if (!endings[endingKey]) {
     endingKey = determineEnding();
   }

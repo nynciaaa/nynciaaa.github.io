@@ -350,7 +350,10 @@ body {
 .character-enter {
   animation: characterEnter 0.7s ease-out;
 }
-
+/* This keyframe animation smoothly introduces a character portrait onto the screen.
+   It starts with the character slightly transparent, scaled down (70%), and positioned lower (100px down),
+   then transitions to full opacity, normal scale, and original position.
+   I wanted to create a gentle, eye-catching entrance effect that helps the character feel alive and dynamic. */
 @keyframes characterEnter {
   from {
     opacity: 0;
@@ -365,7 +368,10 @@ body {
 .moral-pulse {
   animation: moralPulse 0.6s ease-out;
 }
-
+/* This class triggers a quick pulsing effect on the moral indicator or related UI element,
+   scaling it up slightly and back to normal size.
+   The pulse animation is designed to draw the player's attention to changes in moral status,
+   providing subtle visual feedback whenever the moral score updates. */
 @keyframes moralPulse {
   0% {
     transform: scale(1);

@@ -5,8 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High School Choices</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+     <link rel="stylesheet" href="reset.css" />
+   <script src="script.js" defer></script>
 </head>
+<!--For this coding assignment, I chose to create a moral choice game—a story-based experience where the player’s decisions directly affect the narrative’s outcome. This choice was deeply personal, as I’ve always been a huge fan of visual novels and light novel-style games. I’m drawn to their immersive storytelling and the way they give players agency to shape the story. I wanted to bring that same experience to my project.
+The core mechanic of my game is simple: clicking. Players click to progress through the story and make key decisions at branching points. Each of these decisions creates ripple effects that alter the direction and ultimate conclusion of the game. This was intentional. I wanted players to feel the weight of their choices, knowing that even a seemingly small decision could change the fate of the characters or unlock entirely different endings.
+Designing multiple outcomes was both a creative and technical challenge. I had to think carefully about how to structure the code so that the game could track past choices and adjust the story accordingly. It taught me a lot about conditional statements, variable tracking, and narrative logic. I also gained a deeper appreciation for pacing and user interface flow, since visual novels rely so heavily on how smooth and readable the experience is for the player.-->
+
+<!-- To keep the story accessible and relatable, I decided to set the game in a high school environment with a straightforward narrative. -->
+<!--Players are first introduced to Sarah, a student who is a victim of Jake's bullying. 
+This setting aligns well with the theme of moral choices, as high school is often a place 
+where social dynamics and ethical decisions play a major role in shaping character. -->
+
+<!--By placing the player in situations, it becomes easier to explore a variety of moral dilemmas that feel grounded in real life. 
+From the feedback I received, one suggestion was to add a time limit to decision-making moments, increasing pressure and realism. 
+While I really liked the idea, I wasn't able to implement it due to the technical complexity, especially given the number of branching choices the player can make. 
+However, I did introduce a moral indicator system, which tracks whether the player makes good, neutral, or bad decisions. 
+This subtle feedback system helps players reflect on the ethical weight of their actions without needing time pressure, and it ties directly into how the story evolves and concludes.
+-->
+
+<!--For the visual aspect of the game, I wanted to maintain a cohesive and stylized look that matched the tone of a visual novel.
+ I drew all the characters myself using Ibis Paint, a digital drawing software I’m familiar with. 
+ To guide the designs, I used references from Pinterest, which helped me stay consistent with the visual novel aesthetic while adding my own creative spin. 
+For the backgrounds, I sourced images from a free stock image website to save time and focus more on the storytelling and coding elements. 
+I then edited the images in Picsart, applying a comic-style filter to better match the art style of the characters and to give the game a more cohesive, hand-drawn appearance.
+-->
+
+<!--I focused on implementing several core elements commonly found in the genre.
+I created character portraits that change expressions depending on their emotions and the player's actions, helping to make interactions feel more personal and reactive. 
+The background art sets the scene for each chapter, grounding the player in the story’s high school setting and enhancing immersion.
+I also designed a dialogue box with a nameplate, which makes it clear who is speaking and keeps the narrative flow easy to follow. 
+At key moments, players are presented with choice buttons, offering 2 to 3 options that significantly impact the story’s direction. 
+These elements work together to give the player a familiar and engaging visual novel experience while supporting the game’s core theme of moral decision-making.
+-->
 <body>
     <div id="game-container">
         <!-- Start Screen -->
@@ -15,15 +46,15 @@
             <p>Your decisions shape your character</p>
             <button id="start-button" onclick="startGame()">Begin Your Story</button>
         </div>
-
+<!--I included a start screen at the beginning of my moral choice game to give players a clear and polished entry point. It sets the tone for the game, allows them to prepare before diving into the story-->
         <!-- Background -->
         <div id="background"></div>
-
+<!--I included code for character portraits to visually show each character’s emotions and reactions, making the story feel more alive and expressive.-->
         <!-- Character Portrait -->
         <div id="character-container">
             <div id="character-portrait"></div>
         </div>
-
+<!--The dialogue container helps organize the text clearly, showing who is speaking and keeping the story easy to follow.-->
         <!-- Dialogue Container -->
         <div id="dialogue-container" class="hidden">
             <div id="nameplate"></div>
@@ -32,6 +63,12 @@
         </div>
 
         <!-- Moral Indicator -->
+<!-- This section displays the player's moral alignment based on their choices throughout the game. 
+     The container is initially hidden and becomes visible once the player starts making impactful decisions.
+     The "moral-bar" represents the player's current moral status, with the "moral-fill" dynamically adjusting
+     in width and/or color to reflect whether the player's choices are leaning towards good, neutral, or bad.
+     The "moral-label" provides a clear title to help the player understand its function as a visual representation
+     of their decision-making path. This ties directly into the game's theme of moral consequences. -->
         <div id="moral-indicator" class="hidden">
             <div id="moral-bar">
                 <div id="moral-fill"></div>
@@ -39,7 +76,19 @@
             <div id="moral-label">Moral Compass</div>
         </div>
 
+        <!--I included multiple endings to reflect the player’s morals and choices throughout the game. 
+Each ending is based on the final stats and moral score,This system makes every playthrough unique and encourages replayability, whether the player leaned towards good, neutral, or bad decisions. 
+This system makes every playthrough unique and encourages replayability. 
+At the end, I also added a final message that summarizes the type of ending the player unlocked and gives feedback on the consequences of their actions, reinforcing the theme of moral responsibility
+-->
         <!-- End Screen -->
+<!-- This section is displayed at the conclusion of the game and summarizes the player's journey. 
+     "end-title" provides a clear and dramatic closing statement for narrative impact.
+     "end-badge" is used to display a visual representation or emblem of the ending type (eg., good, neutral, bad).
+     "end-message"  displays a final message based on the player's decisions, reinforcing the consequences of their choices.
+     The "final-stats" section includes key reflective elements:
+        - "moral-score" shows the accumulated score based on moral decisions made throughout the game.
+        - "ending-type" reveals the final moral path the player took (Good, Neutral, or Bad). -->
         <div id="end-screen">
             <h2 id="end-title">Your Story Ends</h2>
             <div id="end-badge"></div>
@@ -49,7 +98,7 @@
                 <div id="ending-type">Path: <span id="final-path">Neutral</span></div>
         </div>
     </div>
-
+<!--I also added background music using audio elements to set the mood and enhance the emotional impact of each scene, making the overall experience more immersive and engaging for the player.-->
     <!-- Audio elements -->
     <audio id="background-music" loop>
         <source src="background music.wav" type="audio/wav">
@@ -71,5 +120,25 @@
         <source src="neutral music.wav" type="audio/wav">
     </audio>
 
+<!--Originally, I wanted to include voice acting for the characters to make the game more dynamic and emotionally engaging. However, it turned out to be too time-consuming, especially since my friends—who were going to help with the voices—became unavailable due to university assignments piling up toward the end of the semester.-->
 </body>
 </html>
+
+<!--REFERENCES-->
+<!--https://www.w3schools.com/html/default.asp - TUTORIALS TO HELP ME WITH CODING (links below)
+https://developer.mozilla.org/en-US/docs/Web/HTML
+https://www.youtube.com/watch?v=NcTjJtnGE_w
+https://stackoverflow.com/questions/60065296/how-can-i-make-a-song-progress-bar-for-my-audio-player
+https://fireship.io/ 
+https://code.visualstudio.com/docs
+https://www.codecademy.com/
+https://code.visualstudio.com/docs/getstarted/userinterface-->
+<!--https://www.w3schools.com/graphics/game_score.asp-->
+
+
+<!--https://freesound.org/ - MUSIC SOURCE-->
+<!--https://picsart.com/create - APPLYING A COMIC FILTER FOR BACKGROUNDS -->
+<!--https://www.istockphoto.com/ - BACKGROUND SOURCE-->
+<!--https://unsplash.com/ - BACKGROUND SOURCE-->
+<!--https://pixabay.com/ - BACKGROUND SOURCE-->  
+<!--https://www.freepik.com/popular-photos - BACKGROUND SOURCE-->
